@@ -27,8 +27,8 @@ namespace MvcSiteMapProvider_202.DI.Ninject.Modules
     {
         public override void Load()
         {
-            bool securityTrimmingEnabled = false;
-            bool enableLocalization = true;
+            bool securityTrimmingEnabled = true;
+            bool enableLocalization = false;
             string absoluteFileName = HostingEnvironment.MapPath("~/Mvc.sitemap");
             TimeSpan absoluteCacheExpiration = TimeSpan.FromMinutes(5);
             string[] includeAssembliesForScan = new string[] { "MvcSiteMapProvider_202" };
@@ -64,7 +64,7 @@ namespace MvcSiteMapProvider_202.DI.Ninject.Modules
                 "^Composite");
 
             this.Kernel.Bind<ISiteMapNodeVisibilityProviderStrategy>().To<SiteMapNodeVisibilityProviderStrategy>()
-                .WithConstructorArgument("defaultProviderName", string.Empty);
+                .WithConstructorArgument("defaultProviderName", "MvcSiteMapProvider.FilteredSiteMapNodeVisibilityProvider, MvcSiteMapProvider");
 
             this.Kernel.Bind<ControllerBuilder>().ToConstant(ControllerBuilder.Current);
             this.Kernel.Bind<IControllerBuilder>().To<ControllerBuilderAdaptor>();

@@ -3,8 +3,21 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
-  <mvcSiteMapNode title="Home" controller="Home" action="Index">
-    <mvcSiteMapNode title="About" controller="Home" action="About"/>
-  </mvcSiteMapNode>
+	<!-- Case 1 -->
+	<mvcSiteMapNode title="Should NOT be Visible in Menu" controller="Home" action="Index" visibility="SiteMapPathHelper,!*">
+		<mvcSiteMapNode title="Should be Visible in Menu" controller="Banners" action="Index" visibility="SiteMapPathHelper,MenuHelper,!*">
+			<mvcSiteMapNode title="Should be Visible in Menu" action="Novo" />
+		</mvcSiteMapNode>
+	</mvcSiteMapNode>
+	
+	<!-- Case 2 -->
+	<!--<mvcSiteMapNode title="Should NOT be Visible in Menu" controller="Home" action="Index" visibility="SiteMapPathHelper,!*">
+		<mvcSiteMapNode title="Should NOT be Visible in Menu" controller="Home" action="About" visibility="!*">
+			<mvcSiteMapNode title="Should be Visible in Menu" controller="Banners" action="Index" visibility="SiteMapPathHelper,MenuHelper,!*">
+				<mvcSiteMapNode title="Should be Visible in Menu" action="Novo" />
+			</mvcSiteMapNode>
+		</mvcSiteMapNode>
+	</mvcSiteMapNode>-->
+
 
 </mvcSiteMap>

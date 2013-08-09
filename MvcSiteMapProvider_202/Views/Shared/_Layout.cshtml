@@ -19,17 +19,20 @@
                         @Html.Partial("_LoginPartial")
                     </section>
                     <nav>
-                        <ul id="menu">
+                       @* <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>
+                        </ul>*@
+                        @Html.MvcSiteMap().Menu()
                     </nav>
                 </div>
+                @Html.MvcSiteMap().SiteMap()
             </div>
         </header>
         <div id="body">
             @RenderSection("featured", required: false)
+            @Html.MvcSiteMap().SiteMapPath()
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
